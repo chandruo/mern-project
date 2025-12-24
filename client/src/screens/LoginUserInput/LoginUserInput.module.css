@@ -1,0 +1,48 @@
+.loginContainer{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ background-color: white;
+ margin: 24px;
+ padding: 24px;
+ border-radius: 16px;
+ width: 350px;
+ box-sizing: border-box;
+}
+.tabContainer{
+ display: flex;
+ width: 100%;
+ margin: 16px 0;
+}
+.tabContainer button {
+ flex: 1
+}
+
+.formcontainer{
+    width: 100%;
+}
+
+button {
+    border-radius: 8px;
+    padding: 8px;
+}
+button.active {
+    background-color: rgb(93, 93, 251);
+}
+
+
+.inputfields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.inputfield{
+    display: flex;
+    flex-direction: column;
+}
+
+.action{
+    width: 100%;
+    margin-top: 16px;
+}

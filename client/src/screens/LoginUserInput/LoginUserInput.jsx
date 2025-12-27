@@ -13,7 +13,7 @@ export default function LoginUserInput() {
   const navigate = useNavigate();
 
   const [isLoginTab, setLoginTab] = useState(true);
-  let formName = `${isLoginTab} ? "Login" : "SignUp" form`;
+  let formName = `${isLoginTab ? "Login" : "SignUp"}  form`;
   let isloginActive = isLoginTab;
   function handleChange(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });

@@ -34,7 +34,7 @@ export default function LoginUserInput() {
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL}/api/auth/logi`, {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

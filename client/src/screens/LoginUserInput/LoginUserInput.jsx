@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./LoginUserInput.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL
 
 export default function LoginUserInput() {
   const [loginData, setLoginData] = useState({
@@ -12,7 +13,7 @@ export default function LoginUserInput() {
   const navigate = useNavigate();
 
   const [isLoginTab, setLoginTab] = useState(true);
-  let formName = isLoginTab ? "Login User Form" : "SignUp User Form";
+  let formName = `${isLoginTab} ? "Login" : "SignUp" form`;
   let isloginActive = isLoginTab;
   function handleChange(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -20,7 +21,7 @@ export default function LoginUserInput() {
   function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = fetch("http://13.220.117.158:5000/api/auth/signup", {
+      const response = fetch(`${API_URL}/api/auth/signup`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -32,7 +33,7 @@ export default function LoginUserInput() {
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://13.220.117.158:5000/api/auth/login", {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

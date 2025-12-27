@@ -20,7 +20,7 @@ export default function LoginUserInput() {
   function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = fetch("http://localhost:5000/api/auth/signup", {
+      const response = fetch("http://13.220.117.158:5000/api/auth/signup", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -32,7 +32,7 @@ export default function LoginUserInput() {
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch("http://13.220.117.158:5000/api/auth/login", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -62,6 +62,7 @@ export default function LoginUserInput() {
             onClick={() => {
               setLoginTab(true);
             }}
+          
           >
             Login
           </button>

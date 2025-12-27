@@ -56,4 +56,4 @@ jobs:
             git reset --hard origin/main
             npm install
             pm2 delete mern-backend || true
-            pm2 start index.js --name mern-backend
+            pm2 start server.js --name mern-backend

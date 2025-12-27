@@ -51,8 +51,9 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
-            cd mern-app
-            git pull origin main
-            cd server
+            cd mern-app/server
+            git fetch --all
+            git reset --hard origin/main
             npm install
-            pm2 restart mern-backend
+            pm2 delete mern-backend || true
+            pm2 start index.js --name mern-backend

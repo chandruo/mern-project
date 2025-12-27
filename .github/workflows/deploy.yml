@@ -39,21 +39,35 @@ jobs:
   backend:
     name: Deploy Backend to EC2
     runs-on: ubuntu-latest
-    needs: frontend
 
     steps:
-      - uses: actions/checkout@v4
+      # Checkout the repo
+      - name: Checkout code
+        uses: actions/checkout@v4
 
+      # SSH & Deploy Backend
       - name: SSH & Deploy Backend
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
+          port: 22
+          timeout: 30s
+          command_timeout: 10m
+          proxy_port: 22
+          proxy_timeout: 30s
           script: |
-            cd mern-app/server
+            echo "Deploying backend..."
+            cd ~/mern-project                 # repo root
             git fetch --all
-            git reset --hard origin/main
-            npm install
-            pm2 delete mern-backend || true
-            pm2 start server.js --name mern-backend
+            git reset --hard origin/main      # force latest code
+            cd server                         # backend folder
+            if [ ! -f package.json ]; then
+              echo "package.json not found!"
+              exit 1
+            fi
+            npm install                       # install dependencies
+            pm2 delete mern-backend || true   # stop old process if exists
+            pm2 start server.js --name mern-backend  # start backend
+            echo "Backend deployed successfully."

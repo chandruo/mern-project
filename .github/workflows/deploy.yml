@@ -23,7 +23,8 @@ jobs:
           npm install
 
       - name: Build Frontend
-        VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
         run: |
           cd client
           npm run build

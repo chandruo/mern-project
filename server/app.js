@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 const cors = require("cors");
 app.use(cors({
-  origin: "http://localhost:5173", // frontend URL
+  origin: "http://mern-frontend-siva.s3-website-us-east-1.amazonaws.com", // frontend URL
   credentials: true                // allow cookies
 }));
 app.use(express.json());
